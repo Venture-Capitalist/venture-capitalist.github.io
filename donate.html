@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate — ShadowCrystal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" type="image/x-icon" href="assets/faviconlogo.png">
+  <style>
+    /* ── Donation amounts ── */
+    .donate-amounts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .amount-btn {
+      background: rgba(26,10,58,0.6);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: var(--white);
+    }
+    .amount-btn:hover, .amount-btn.selected {
+      border-color: var(--plasma);
+      background: var(--plasma-soft);
+      box-shadow: 0 0 16px rgba(255,16,204,0.2);
+    }
+    .amount-value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .amount-label { font-size: 0.75rem; color: var(--star-dim); }
+
+    /* ── Impact cards ── */
+    .impact-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .impact-amount {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--plasma);
+      margin-bottom: 0.5rem;
+    }
+    .impact-card h4 { color: var(--white); font-size: 0.9rem; margin-bottom: 0.4rem; }
+    .impact-card p  { font-size: 0.825rem; max-width: none; }
+
+    /* ── Donate form ── */
+    .donate-form {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    @media (max-width: 600px) { .donate-form { padding: 2rem 1.5rem; } }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="SCnav">
+    <a href="index.html" class="nav-brand">
+      <img src="assets/logo.png" alt="ShadowCrystal logo">
+      <span class="nav-brand-name">SHADOWCRYSTAL ENGINEERING</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links mt-3">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="donate.html" class="active">Donate</a></li>
+      <li><a href="join.html" class="nav-cta">Join Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Hero -->
+  <div class="page-hero">
+    <div class="starfield"></div>
+    <div class="container">
+      <h1 class="text-white glow-plasma">Help Students Build<br>the Future</h1>
+      <p style="max-width:52ch; margin:1.25rem auto 0; font-size:1.05rem;">
+        ShadowCrystal is possible only because of donors who believe in giving young engineers the tools to succeed.
+      </p>
+    </div>
+  </div>
+
+  <!-- Why it matters -->
+  <section>
+    <div class="container">
+      <h2 class="section-title text-center">Why Funding Matters</h2>
+      <div class="orbital-divider"><div class="orbital-gem"></div></div>
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items:start;">
+        <div>
+          <p style="font-size:1rem; margin-bottom:1.25rem;">High-impact engineering programs — especially FIRST Robotics — require a baseline of over <strong style="color:var(--plasma);">$20,000 per year</strong> to cover registration fees, tools, machinery, parts, and travel. That barrier locks out the vast majority of students who don't attend a well-funded school or whose families can't cover costs independently.</p>
+          <p style="font-size:1rem; margin-bottom:1.25rem;">Meanwhile, the US faces a serious shortage of engineering talent : there are roughly <strong style="color:var(--white);">three open engineering jobs for every qualified candidate</strong> in 2026. Students who can't access hands-on STEM programs fall behind their peers in college admissions and career readiness.</p>
+          <p style="font-size:1rem;">ShadowCrystal exists to break this cycle. Your donation directly funds the parts, tools, registration fees, and facilities that enable students to expand their engineering skills.</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:0.75rem;">
+          <div class="value-pill">
+            <span class="value-pill-icon">🔩</span>
+            <div>
+              <div class="value-pill-title">Parts &amp; Materials</div>
+              <p style="font-size:0.875rem; max-width:none;">Electronics, motors, metal stock, rocket kits, ROV components, and drone hardware — the raw materials that students build with.</p>
+            </div>
+          </div>
+          <div class="value-pill">
+            <span class="value-pill-icon">🏆</span>
+            <div>
+              <div class="value-pill-title">Competition Registration</div>
+              <p style="font-size:0.875rem; max-width:none;">FIRST Robotics, SeaPerch, and other programs charge registration fees that make many student teams financially inaccessible without external support.</p>
+            </div>
+          </div>
+          <div class="value-pill">
+            <span class="value-pill-icon">🏛️</span>
+            <div>
+              <div class="value-pill-title">Facility &amp; Operations</div>
+              <p style="font-size:0.875rem; max-width:none;">Workspace, insurance, tools, and the administrative costs of running a legitimate nonprofit organization.</p>
+            </div>
+          </div>
+          <div class="value-pill">
+            <span class="value-pill-icon">📋</span>
+            <div>
+              <div class="value-pill-title">501(c)(3) Status</div>
+              <p style="font-size:0.875rem; max-width:none;">ShadowCrystal is in the process of obtaining 501(c)(3) nonprofit status. Donations will be tax-deductible once this process reaches completion.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact at each level -->
+  <section style="padding-top:0;">
+    <div class="container">
+      <h2 class="section-title text-center">Your Donation in Action</h2>
+      <div class="orbital-divider"><div class="orbital-gem"></div></div>
+      <div class="SCcard-grid SCcard-grid-3" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+        <div class="impact-card">
+          <div class="impact-amount">$75</div>
+          <h4>Rocket Launch</h4>
+          <p>Funds a model rocket kit and solid-fuel motor for one student in the Rocketry Subdivision to build and launch their own rocket.</p>
+        </div>
+        <div class="impact-card">
+          <div class="impact-amount">$250</div>
+          <h4>ROV Build</h4>
+          <p>Covers SeaPerch ROV kit materials for one student to construct a fully functional remotely operated underwater vehicle.</p>
+        </div>
+        <div class="impact-card">
+          <div class="impact-amount">$1,000</div>
+          <h4>Team Equipment</h4>
+          <p>Funds tools and parts for an entire division's quarterly projects — enabling every student on a team to take on ambitious builds.</p>
+        </div>
+        <div class="impact-card">
+          <div class="impact-amount">$4,000+</div>
+          <h4>"BLACK OPAL" Sponsor Tier</h4>
+          <p>Covers a major portion of FRC registration fees, competition travel, and general of operations — earns major sponsor recognition across ShadowCrystal materials.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Donate Form -->
+  <section style="padding-top:0;">
+    <div class="container">
+      <h2 class="section-title text-center">Donate to ShadowCrystal</h2>
+      <p style="text-align:center; margin: 0.5rem auto 2.5rem;">Every contribution, large or small, goes directly to funding programs for students.</p>
+      <p style="text-align:center; margin: 0.5rem auto 2.5rem;">For donation inquiries, please reach out to us at <a href="mailto:shadowcrystalengineering@gmail.com" class="text-glow">shadowcrystalengineering@gmail.com</a>
+.</p>
+
+
+      </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="ShadowCrystal">
+        <div class="footer-brand-name">SHADOWCRYSTAL</div>
+        <p class="footer-desc">A Maryland nonprofit empowering high school engineers in Montgomery and Frederick Counties through hands-on STEM programs.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="join.html">Join Us</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Divisions</h4>
+        <ul>
+          <li><a href="programs.html#terrestrial">🤖 Terrestrial</a></li>
+          <li><a href="programs.html#aerospace">✈️ Aerospace</a></li>
+          <li><a href="programs.html#marine">🌊 Marine</a></li>
+          <li><a href="programs.html#business">💼 Business</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ShadowCrystal. All rights reserved.</span>
+      <span>Montgomery &amp; Frederick Counties, Maryland</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

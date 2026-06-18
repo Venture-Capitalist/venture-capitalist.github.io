@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Us — ShadowCrystal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" type="image/x-icon" href="assets/faviconlogo.png">
+  <style>
+    /* ── Step timeline ── */
+    .steps { display: flex; flex-direction: column; gap: 0; position: relative; }
+    .step {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 1.5rem;
+      position: relative;
+      padding-bottom: 2.5rem;
+    }
+    .step:last-child { padding-bottom: 0; }
+    .step-num-col { display: flex; flex-direction: column; align-items: center; }
+    .step-num {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--crystal-mid), var(--crystal-bright));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: var(--white);
+      flex-shrink: 0;
+      box-shadow: 0 0 20px rgba(139,63,239,0.5);
+      position: relative;
+      z-index: 1;
+    }
+    .step-line {
+      flex: 1;
+      width: 2px;
+      background: linear-gradient(180deg, var(--crystal-bright), transparent);
+      margin-top: 8px;
+    }
+    .step:last-child .step-line { display: none; }
+    .step-body { padding-top: 0.75rem; }
+    .step-body h3 { color: var(--white); margin-bottom: 0.5rem; font-size: 1.1rem; }
+    .step-body p  { font-size: 0.9rem; }
+
+    /* ── Eligibility ── */
+    .elig-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .elig-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .elig-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .elig-card h4 { color: var(--white); font-family:'Orbitron',sans-serif; font-size:0.8rem; letter-spacing:0.1em; margin-bottom:0.4rem; }
+    .elig-card p  { font-size:0.85rem; max-width:none; }
+
+    /* ── Form layout ── */
+    .join-form {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } .join-form { padding: 2rem 1.5rem; } }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="SCnav">
+    <a href="index.html" class="nav-brand">
+      <img src="assets/logo.png" alt="ShadowCrystal logo">
+      <span class="nav-brand-name">SHADOWCRYSTAL ENGINEERING</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links mt-3">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="donate.html">Donate</a></li>
+      <li><a href="join.html" class="nav-cta active">Join Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Hero -->
+  <div class="page-hero">
+    <div class="starfield"></div>
+    <div class="container">
+      <h1 class="text-white glow-purple">Join ShadowCrystal</h1>
+      <p style="max-width:52ch; margin:1.25rem auto 0; font-size:1.05rem;">
+        No experience needed. No cost to join. Just curiosity, commitment, and a drive to build something real.
+      </p>
+    </div>
+  </div>
+
+  <!-- Eligibility -->
+  <section>
+    <div class="container">
+      <h2 class="section-title text-center">Are You Eligible?</h2>
+      <div class="orbital-divider"><div class="orbital-gem"></div></div>
+      <div class="elig-grid">
+        <div class="elig-card">
+          <div class="elig-icon">🎓</div>
+          <h4>Grades 8–12</h4>
+          <p>Open to all students from 8th through 12th grade — freshmen and seniors alike are welcome from day one.</p>
+        </div>
+        <div class="elig-card">
+          <div class="elig-icon">🏫</div>
+          <h4>Any School</h4>
+          <p>Urbana, Damascus, Clarksburg, Richard Montgomery, or any other school in the area — your campus doesn't matter.</p>
+        </div>
+        <div class="elig-card">
+          <div class="elig-icon">📍</div>
+          <h4>Maryland Based</h4>
+          <p>We primarily serve Northern Montgomery County and Southern Frederick County, Maryland.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Steps -->
+  <section style="padding-top: 0;">
+    <div class="container" style="max-width: 760px;">
+      <h2 class="section-title text-center">Your Path to Joining</h2>
+      <div class="orbital-divider"><div class="orbital-gem"></div></div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num-col">
+            <div class="step-num">1</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-body">
+            <h3>Submit Your Interest</h3>
+            <p>Fill out the interest form below with your name, grade, school, and which divisions interest you most. This lets us match you with the right team and keep you updated on upcoming events.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num-col">
+            <div class="step-num">2</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-body">
+            <h3>Attend an Info Session or Camp</h3>
+            <p>We'll reach out to invite you to an intro session where you'll meet the team, hear about projects, and get a feel for how ShadowCrystal operates before committing to anything.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num-col">
+            <div class="step-num">3</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-body">
+            <h3>Choose Your Division</h3>
+            <p>After meeting the team, you'll choose a primary division — Terrestrial, Aerospace, Marine, or Business — based on your interests. You can always explore other divisions as you grow within the organization.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num-col">
+            <div class="step-num">4</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-body">
+            <h3>Start Building</h3>
+            <p>Jump in. Veterans, both adult and student, will guide you on your first projects, and you'll have immediate access to our parts warehouse, tools, and a team of students who want to see you succeed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interest Form -->
+  <section style="padding-top: 0;">
+    <div class="SCcard" style="max-width: 700px; margin: 0 auto; padding: 1.5rem; overflow: hidden;">
+
+      <img src="assets/logoAndName.png" alt="">
+      <iframe 
+        src="https://docs.google.com/forms/d/e/1FAIpQLSdyP_dWeTw2k_jpirVtV1X8-CkGLT4eZHPB58OIO8XMiTX7zA/viewform?embedded=true" 
+        width="100%" 
+        height="950" 
+        frameborder="0" 
+        marginheight="0" 
+        marginwidth="0"
+        style="border: none; background: transparent; display: block;">
+        Loading…
+      </iframe>
+
+      <div style="text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+        <p style="font-size: 0.9rem; color: var(--star-dim); margin: 0;">
+          We'll follow up within a few days. Questions? <a href="contact.html" style="color: var(--crystal-glow); text-decoration: none;">Contact us directly</a>.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="ShadowCrystal">
+        <div class="footer-brand-name">SHADOWCRYSTAL</div>
+        <p class="footer-desc">A Maryland nonprofit empowering high school engineers in Montgomery and Frederick Counties through hands-on STEM programs.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="join.html">Join Us</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Divisions</h4>
+        <ul>
+          <li><a href="programs.html#terrestrial">🤖 Terrestrial</a></li>
+          <li><a href="programs.html#aerospace">✈️ Aerospace</a></li>
+          <li><a href="programs.html#marine">🌊 Marine</a></li>
+          <li><a href="programs.html#business">💼 Business</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ShadowCrystal. All rights reserved.</span>
+      <span>Montgomery &amp; Frederick Counties, Maryland</span>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

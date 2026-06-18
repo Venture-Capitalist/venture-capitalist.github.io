@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — ShadowCrystal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" type="image/x-icon" href="assets/faviconlogo.png">
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+    .contact-info-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+    }
+    .contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid rgba(139,63,239,0.15);
+    }
+    .contact-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .contact-row-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+    .contact-row-label { font-family:'Orbitron',sans-serif; font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--plasma); font-weight:700; margin-bottom:0.2rem; }
+    .contact-row-value { color:var(--star); font-size:0.9rem; }
+    .contact-row-value a { color:var(--crystal-glow); }
+    .contact-row-value a:hover { color:var(--white); }
+
+    .contact-form {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+    }
+    @media (max-width: 480px) { .contact-form { padding: 1.75rem 1.25rem; } }
+
+    .reason-chips { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.25rem; }
+    .reason-chip {
+      background: rgba(26,10,58,0.8);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.78rem;
+      color: var(--star-dim);
+      cursor: pointer;
+      transition: all 0.18s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .reason-chip:hover, .reason-chip.selected {
+      border-color: var(--plasma);
+      color: var(--plasma);
+      background: var(--plasma-soft);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="SCnav">
+    <a href="index.html" class="nav-brand">
+      <img src="assets/logo.png" alt="ShadowCrystal logo">
+      <span class="nav-brand-name">SHADOWCRYSTAL ENGINEERING</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links mt-3">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="donate.html">Donate</a></li>
+      <li><a href="join.html" class="nav-cta">Join Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Hero -->
+  <div class="page-hero">
+    <div class="starfield"></div>
+    <div class="container">
+      <h1 class="text-white glow-purple">Contact ShadowCrystal</h1>
+      <p style="max-width:50ch; margin:1.25rem auto 0; font-size:1.05rem;">
+        Questions about programs, mentorship, partnerships, or how to get involved? We'd love to hear from you.
+      </p>
+    </div>
+  </div>
+
+  <!-- Contact Body -->
+  <section>
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Left: Info -->
+        <div>
+          <p class="section-label">Reach Us</p>
+          <h2 class="section-title" style="margin-bottom:1.5rem;">Contact Information</h2>
+
+          <div class="contact-info-card">
+            <div class="contact-row">
+              <div class="contact-row-icon">📍</div>
+              <div>
+                <div class="contact-row-label">Location</div>
+                <div class="contact-row-value">Montgomery County &amp;<br>Frederick County, Maryland</div>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-row-icon">✉️</div>
+              <div>
+                <div class="contact-row-label">Email</div>
+                <div class="contact-row-value"><a href="mailto:shadowcrystalengineering@gmail.com">shadowcrystalengineering@gmail.com</a></div>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-row-icon">🕐</div>
+              <div>
+                <div class="contact-row-label">Response Time</div>
+                <div class="contact-row-value">We will always respond within 1–3 business days.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:2rem;">
+            <p class="section-label">Looking for Something Specific?</p>
+            <div style="display:flex; flex-direction:column; gap:0.75rem; margin-top:0.5rem;">
+              <div class="SCcard" style="padding:1.1rem 1.25rem; display:flex; align-items:center; gap:1rem;">
+                <span style="font-size:1.4rem;">🧑‍🎓</span>
+                <div>
+                  <div style="font-family:'Orbitron',sans-serif; font-size:0.75rem; color:var(--white); margin-bottom:0.2rem;">Students</div>
+                  <p style="font-size:0.8rem; max-width:none;"><a href="join.html" style="color:var(--crystal-glow);">Visit the Join page</a> to submit an interest form.</p>
+                </div>
+              </div>
+              <div class="SCcard" style="padding:1.1rem 1.25rem; display:flex; align-items:center; gap:1rem;">
+                <span style="font-size:1.4rem;">💼</span>
+                <div>
+                  <div style="font-family:'Orbitron',sans-serif; font-size:0.75rem; color:var(--white); margin-bottom:0.2rem;">Corporate Sponsors</div>
+                  <p style="font-size:0.8rem; max-width:none;">Use the form below and select "Sponsorship" to reach our leadership team.</p>
+                </div>
+              </div>
+              <!-- <div class="SCcard" style="padding:1.1rem 1.25rem; display:flex; align-items:center; gap:1rem;">
+                <span style="font-size:1.4rem;">💜</span>
+                <div>
+                  <div style="font-family:'Orbitron',sans-serif; font-size:0.75rem; color:var(--white); margin-bottom:0.2rem;">Individual Donors</div>
+                  <p style="font-size:0.8rem; max-width:none;"><a href="donate.html" style="color:var(--crystal-glow);">Visit the Donate page</a> to contribute directly.</p>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div>
+          <p class="section-label">Send a Message</p>
+          <h2 class="section-title" style="margin-bottom:1.5rem;">How Can We Help?</h2>
+          <div class="contact-form" style="padding: 1rem; overflow: hidden;">
+            
+            <img src="assets/logoAndName.png" alt="">
+            <iframe 
+              src="https://docs.google.com/forms/d/e/1FAIpQLSeUQs5Kbenn44beshV5H0XH91ZSrAADeaksrhuspnRoNWBS6A/viewform?embedded=true" 
+              width="100%" 
+              height="850" 
+              frameborder="0" 
+              marginheight="0" 
+              marginwidth="0"
+              style="border: none; background: transparent; display: block;">
+              Loading…
+            </iframe>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="ShadowCrystal">
+        <div class="footer-brand-name">SHADOWCRYSTAL</div>
+        <p class="footer-desc">A Maryland nonprofit empowering high school engineers in Montgomery and Frederick Counties through hands-on STEM programs.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="join.html">Join Us</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Divisions</h4>
+        <ul>
+          <li><a href="programs.html#terrestrial">🤖 Terrestrial</a></li>
+          <li><a href="programs.html#aerospace">✈️ Aerospace</a></li>
+          <li><a href="programs.html#marine">🌊 Marine</a></li>
+          <li><a href="programs.html#business">💼 Business</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ShadowCrystal. All rights reserved.</span>
+      <span>Montgomery &amp; Frederick Counties, Maryland</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

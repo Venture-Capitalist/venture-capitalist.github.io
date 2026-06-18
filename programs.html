@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programs — ShadowCrystal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" type="image/x-icon" href="assets/faviconlogo.png">
+  <style>
+    /* ── Division Hero Banners ── */
+    .division-banner {
+      padding: 3rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .division-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.08;
+      border-radius: var(--radius-lg);
+    }
+    .banner-terrestrial { background: linear-gradient(135deg, rgba(91,31,175,0.3), rgba(26,10,58,0.8)); }
+    .banner-terrestrial::before { background: radial-gradient(ellipse at right, var(--crystal-bright), transparent); }
+    .banner-aerospace   { background: linear-gradient(135deg, rgba(16,100,200,0.25), rgba(26,10,58,0.8)); }
+    .banner-aerospace::before { background: radial-gradient(ellipse at right, #10B4FF, transparent); }
+    .banner-marine      { background: linear-gradient(135deg, rgba(16,180,130,0.2), rgba(26,10,58,0.8)); }
+    .banner-marine::before { background: radial-gradient(ellipse at right, #10D2A0, transparent); }
+    .banner-business    { background: linear-gradient(135deg, rgba(200,150,20,0.2), rgba(26,10,58,0.8)); }
+
+    .division-banner-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .division-big-icon { font-size: 4rem; line-height: 1; }
+    .division-banner h2 { color: var(--white); margin-bottom: 0.5rem; }
+    .division-banner p  { font-size: 0.95rem; max-width: 60ch; }
+
+    /* ── Program Cards ── */
+    .program-card {
+      background: rgba(26,10,58,0.5);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+    }
+    .program-card h4 { color: var(--white); font-family: 'Orbitron', sans-serif; font-size:0.9rem; margin-bottom: 0.6rem; }
+    .program-card p  { font-size: 0.875rem; max-width: none; }
+
+    /* ── Subdivision Label ── */
+    .subdiv-label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin: 2rem 0 1rem;
+    }
+    .subdiv-label.aerospace { color: #7DDCFF; }
+    .subdiv-label.marine    { color: #5DFFCA; }
+
+    /* ── Highlight callout ── */
+    .callout {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: var(--plasma-soft);
+      border: 1px solid rgba(255,16,204,0.25);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-top: 1.25rem;
+    }
+    .callout-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .callout p    { font-size: 0.875rem; max-width: none; color: var(--star); }
+
+    /* ── Anchor offset ── */
+    .anchor-offset { scroll-margin-top: 90px; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="SCnav">
+    <a href="index.html" class="nav-brand">
+      <img src="assets/logo.png" alt="ShadowCrystal logo">
+      <span class="nav-brand-name">SHADOWCRYSTAL ENGINEERING</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links mt-3">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html" class="active">Programs</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="donate.html">Donate</a></li>
+      <li><a href="join.html" class="nav-cta">Join Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Hero -->
+  <div class="page-hero">
+    <div class="starfield"></div>
+    <div class="container">
+      <h1 class="text-white glow-purple">Programs &amp; Divisions</h1>
+      <p style="max-width:54ch; margin:1.25rem auto 0; font-size:1.05rem;">
+        Every ShadowCrystal division is a structured environment where students move from concept to physical reality while guided by mentors with real-world expertise.
+      </p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:2rem;">
+        <a href="#terrestrial" class="btn btn-ghost" style="font-size:0.72rem; padding:0.6rem 1.2rem;">🤖 Terrestrial</a>
+        <a href="#aerospace"   class="btn btn-ghost" style="font-size:0.72rem; padding:0.6rem 1.2rem;">✈️ Aerospace</a>
+        <a href="#marine"      class="btn btn-ghost" style="font-size:0.72rem; padding:0.6rem 1.2rem;">🌊 Marine</a>
+        <a href="#business"    class="btn btn-ghost" style="font-size:0.72rem; padding:0.6rem 1.2rem;">💼 Business</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summer Camps -->
+  <section id="summer-camps" style="padding-bottom: 0;">
+    <div class="container">
+      <div class="text-center mb-4">
+        <span class="section-label">Limited Availability</span>
+        <h2 class="section-title text-white">Summer Camps Now Open!</h2>
+        <div class="orbital-divider"><div class="orbital-gem"></div></div>
+      </div>
+      
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-6 col-lg-5">
+          <div class="SCcard h-100 flex flex-column">
+            <span class="division-tag tag-aerospace">Aerospace Division</span>
+            <h3 class="text-white mt-1">Drone Summer Camp</h3>
+            <p class="mb-3"><strong>Taught by:</strong> Victor Wang (Published Drone Research &amp; Math Tutor)</p>
+            
+            <div class="mb-3 text-white" style="font-size: 0.95rem;">
+              📅 <strong>Dates:</strong> July 20–24<br>
+              ⏰ <strong>Time:</strong> 9:00 AM – 12:00 PM<br>
+              🎯 <strong>Focus:</strong> Learn · Test · Fly
+            </div>
+            
+            <p style="font-size: 0.875rem;">Explore the fundamentals of control theory, critical components, and drone systems to build a complete, ready-to-fly drone from scratch.</p>
+            
+            <div class="mt-auto pt-3 border-top border-secondary text-center">
+              <div class="badge bg-danger mb-2">Only 15 Spots Available!</div>
+              <div class="text-plasma font-monospace mb-3" style="font-size: 0.85rem;">🔥 10% OFF EARLY DISCOUNT</div>
+              <img src="assets/droneCampFlyer.png" alt="Drone Summer Camp Flyer" class="img-fluid rounded border border-secondary mx-auto mb-3" style="max-height: 350px;">
+              <p style="font-size:0.8rem; margin:0 auto 0.5rem;">Scan the QR code on the flyer or <a href="https://docs.google.com/forms/d/e/1FAIpQLScfhVxbqY1wRoinN2GEfHrfSd-qFJPQf0H6X3JK90FKbe0_rQ/viewform" class="text-glow">click here</a> to sign up</p>
+	      <p>Questions? Contact us!</p>
+              <a href="mailto:shadowcrystalengineering@gmail.com" class="text-glow" style="font-size:0.85rem;">shadowcrystalengineering@gmail.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-5">
+          <div class="SCcard h-100 flex flex-column">
+            <span class="division-tag tag-aerospace">Aerospace Division</span>
+            <h3 class="text-white mt-1">Rocketry Summer Camp</h3>
+            <p class="mb-3"><strong>Taught by:</strong> Tikhon Kozlov (President of UHS Rocketry Club &amp; Math Tutor)</p>
+            
+            <div class="mb-3 text-white" style="font-size: 0.95rem;">
+              📅 <strong>Dates:</strong> July 20–24<br>
+              ⏰ <strong>Time:</strong> 1:00 PM – 4:00 PM<br>
+              🎯 <strong>Focus:</strong> Learn · Design · Build
+            </div>
+            
+            <p style="font-size: 0.875rem;">Dive into model rocketry kits, simulate launches via OpenRocket, and explore the essentials of model rocketry launches.</p>
+            
+            <div class="mt-auto pt-3 border-top border-secondary text-center">
+              <div class="badge bg-danger mb-2">Only 15 Spots Available!</div>
+              <div class="text-plasma font-monospace mb-3" style="font-size: 0.85rem;">🔥 10% OFF EARLY DISCOUNT</div>
+              <img src="assets/rocketryCampFlyer.png" alt="Rocketry Summer Camp Flyer" class="img-fluid rounded border border-secondary mx-auto mb-3" style="max-height: 350px;">
+              <p style="font-size:0.8rem; margin:0 auto 0.5rem;">Scan the QR code on the flyer or <a href="https://docs.google.com/forms/d/e/1FAIpQLScfhVxbqY1wRoinN2GEfHrfSd-qFJPQf0H6X3JK90FKbe0_rQ/viewform" class="text-glow">click here</a> to sign up</p>
+              <p>Questions? Contact us!</p>
+              <a href="mailto:shadowcrystalengineering@gmail.com" class="text-glow" style="font-size:0.85rem;">shadowcrystalengineering@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Terrestrial Division -->
+  <section id="terrestrial" class="anchor-offset">
+    <div class="container">
+      <div class="division-banner banner-terrestrial">
+        <div class="division-banner-inner">
+          <div class="division-big-icon">🤖</div>
+          <div>
+            <span class="division-tag tag-terrestrial" style="margin-bottom:0.6rem;">Terrestrial Division</span>
+            <h2>Land-Based Robotics</h2>
+            <p>Students design, wire, program, and test machines that operate on dry land and compete in the FIRST Robotics Competition. See <u><a href="https://www.youtube.com/watch?v=Jd29kzjclV0">this video</a></u> for more information!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="SCcard-grid SCcard-grid-2">
+
+        <div class="program-card">
+          <h4>⚙️ Vision Systems &amp; Automation</h4>
+          <p>Students explore computer vision using cameras and embedded processors to enable robots to detect and respond to the world around them autonomously. Projects combine programming, sensors, and real-time feedback loops into functioning autonomous systems.</p>
+        </div>
+        <div class="program-card">
+          <h4>🔧 Mechanical Engineering</h4>
+          <p>Hands-on work with computer aided design (CAD), metal stock, drive trains, motors, pneumatics, and structural design. Students learn to prototype, iterate, and fabricate robust mechanisms built to survive competition conditions.</p>
+        </div>
+        <div class="program-card">
+          <h4>💻 Embedded Software</h4>
+          <p>Programming robots in Java and Python using industry-standard frameworks. Students write control loops, manage sensor data, and implement autonomous routines controlling hundred-pound machines with single-centimeter accuracy.</p>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:1.5rem;">
+        <span class="callout-icon">🌐</span>
+        <p>The Terrestrial Division participates in the <strong style="color:var(--white)">FIRST Robotics Competition</strong> — an internationally accredited program that provides access to grants, mentorship networks, and a massive global community of student engineers.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Aerospace Division -->
+  <section id="aerospace" class="anchor-offset" style="padding-top:0;">
+    <div class="container">
+      <div class="division-banner banner-aerospace">
+        <div class="division-banner-inner">
+          <div class="division-big-icon">✈️</div>
+          <div>
+            <span class="division-tag tag-aerospace" style="margin-bottom:0.6rem;">Aerospace Division</span>
+            <h2>Drones &amp; Rocketry</h2>
+            <p>Two subdivisions, one sky. Students learn to build and fly drones and construct solid-fuel model rockets, all while learning aerodynamics, flight simulation, and safety protocols.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="subdiv-label aerospace">🚁 Drone Subdivision</p>
+      <div class="SCcard-grid SCcard-grid-2" style="margin-bottom:2rem;">
+        <div class="program-card">
+          <h4>🛠️ Drone Construction</h4>
+          <p>Students build drones from raw parts and learn the actual programs and algorithms that are used to control drones. We engage in iterative design and physical engineering to put theory to the test. </p>
+        </div>
+        <div class="program-card">
+          <h4>🌀 Control Theory &amp; Tuning</h4>
+          <p>Students study PID (Proportional-Integral-Derivative) controllers and analyze their performance. They learn the key tasks of flight software, such as managing flight states, communication, risk tolerance, and more. </p>
+        </div>
+        <div class="program-card">
+          <h4>🎮 Flight Operations</h4>
+          <p>Once drones are built, students engage in real flight operations, including pre-flight checklists and safety protocols. Students also learn about the regulations that control drone use. </p>
+        </div>
+      </div>
+
+
+      <p class="subdiv-label aerospace">🚀 Rocketry Subdivision</p>
+      <div class="SCcard-grid SCcard-grid-2">
+        <div class="program-card">
+          <h4>🖥️ OpenRocket Design</h4>
+          <p>Students design rockets from scratch using OpenRocket, an open source rocketry simulation tool used by hobbyists and engineers worldwide. Students learn OpenRocket basics, physics concepts, and motor classification.</p>
+        </div>
+        <div class="program-card">
+          <h4>🧱 Rocket Kit Fabrication</h4>
+          <p>Students build their own rockets from kits while learning fin attachment, nose cone assembly, recovery wadding, and motor mount integration.</p>
+        </div>
+        <div class="program-card">
+          <h4>🔥 Launches</h4>
+          <p>After fabrication, every student gets to launch their rocket on a solid-fuel motor.</p>
+        </div>
+        <div class="program-card">
+          <h4>📋 Safety &amp; NAR Standards</h4>
+          <p>All rocketry activities adhere National Association of Rocketry (NAR) safety codes. Students are trained on safe motor handling, launch range conduct, and recovery procedures before any launch occurs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marine Division -->
+  <section id="marine" class="anchor-offset" style="padding-top:0;">
+    <div class="container">
+      <div class="division-banner banner-marine">
+        <div class="division-banner-inner">
+          <div class="division-big-icon">🌊</div>
+          <div>
+            <span class="division-tag tag-marine" style="margin-bottom:0.6rem;">Marine Division</span>
+            <h2>Underwater Vehicles</h2>
+            <p>Students fabricate and pilot tethered remotely operated vehicles (ROVs) that explore underwater environments, applying principles of fluid mechanics, buoyancy, and waterproof design.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="SCcard-grid SCcard-grid-2">
+        <div class="program-card">
+          <h4>⚡ Aquatic Electrical Wiring</h4>
+          <p>A specialized skill set: students learn to solder and waterproof electrical connections for submersible environments, including cable management, epoxy sealing techniques, and safe handling of underwater power systems.</p>
+        </div>
+        <div class="program-card">
+          <h4>🌊 Fluid Mechanics Fundamentals</h4>
+          <p>Before building, students study buoyancy, drag in water, and the principles that govern how objects move through fluid environments, giving them the conceptual foundation to design effective ROVs.</p>
+        </div>
+        <div class="program-card">
+          <h4>🤿 SeaPerch ROV Fabrication</h4>
+          <p>ShadowCrystal's Marine Division builds ROVs following the international SeaPerch platform, a curriculum developed by the MIT Sea Grant and now managed by RoboNation. Students assemble their underwater vehicles from structural tubing, thrusters, and waterproofed electronics.</p>
+        </div>
+      </div>
+
+      <!--
+      
+      <div class="callout" style="margin-top:1.5rem;">
+        <span class="callout-icon">🌐</span>
+        <p>The Marine Division is aligned with <strong style="color:var(--white)">RoboNation</strong> — a global nonprofit running a STEM-to-workforce pipeline that connects student engineers directly with professional pathways in marine technology and defense.</p>
+      </div>
+
+      -->
+    </div>
+  </section>
+
+  <!-- Business Division -->
+  <section id="business" class="anchor-offset" style="padding-top:0;">
+    <div class="container">
+      <div class="division-banner banner-business">
+        <div class="division-banner-inner">
+          <div class="division-big-icon">💼</div>
+          <div>
+            <span class="division-tag tag-business" style="margin-bottom:0.6rem;">Business Division</span>
+            <h2>Leadership &amp; Entrepreneurship</h2>
+            <p>The backbone of ShadowCrystal's operations. Business Division students develop real-world skills in fundraising, marketing, outreach, project management, and organizational leadership by running ShadowCrystal as what it truly is: a technology startup.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="SCcard-grid SCcard-grid-3">
+        <div class="program-card">
+          <h4>📣 Fundraising &amp; Grant Writing</h4>
+          <p>Students learn to write compelling grant applications, lead fundraising campaigns, and communicate ShadowCrystal's impact to potential donors, building persuasive writing and negotiation skills.</p>
+        </div>
+        <div class="program-card">
+          <h4>📢 Marketing &amp; Outreach</h4>
+          <p>Managing ShadowCrystal's public presence: social media, event promotion, community outreach, and recruitment campaigns. Students carry these skills into their future entrepreneurial ventures.</p>
+        </div>
+        <div class="program-card">
+          <h4>🏛️ Organizational Leadership</h4>
+          <p>Advised by the Business Division, Students take on real leadership roles within ShadowCrystal's structure. Division leads, project managers, and other officers run the organization quarter-to-quarter with mentor guidance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="text-align:center;">
+    <div class="container">
+      <h2 class="section-title text-white">Find Your Division</h2>
+      <p style="margin:1rem auto 2rem;">Whether you love to code, build, fly, swim, or lead — there's a place for you in ShadowCrystal.</p>
+      <a href="join.html" class="btn btn-plasma">Join ShadowCrystal</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="ShadowCrystal">
+        <div class="footer-brand-name">SHADOWCRYSTAL</div>
+        <p class="footer-desc">A Maryland nonprofit empowering high school engineers in Montgomery and Frederick Counties through hands-on STEM programs.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="join.html">Join Us</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Divisions</h4>
+        <ul>
+          <li><a href="#terrestrial">🤖 Terrestrial</a></li>
+          <li><a href="#aerospace">✈️ Aerospace</a></li>
+          <li><a href="#marine">🌊 Marine</a></li>
+          <li><a href="#business">💼 Business</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ShadowCrystal. All rights reserved.</span>
+      <span>Montgomery &amp; Frederick Counties, Maryland</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

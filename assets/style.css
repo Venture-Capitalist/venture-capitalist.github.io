@@ -1,0 +1,439 @@
+/* =============================================
+   SHADOWCRYSTAL — Shared Stylesheet
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ─── Tokens ─────────────────────────────────── */
+:root {
+  --void:          #0A0A14;
+  --void-2:        #12102A;
+  --crystal-dark:  #1A0A3A;
+  --crystal-mid:   #5B1FAF;
+  --crystal-bright:#8B3FEF;
+  --crystal-glow:  #B86EFF;
+  --plasma:        #FF10CC;
+  --plasma-dim:    #CC0099;
+  --plasma-soft:   rgba(255, 16, 204, 0.15);
+  --star:          #E0C8FF;
+  --star-dim:      #9B82CC;
+  --white:         #FFFFFF;
+  --card-bg:       rgba(30, 12, 65, 0.7);
+  --border:        rgba(139, 63, 239, 0.3);
+  --radius:        12px;
+  --radius-lg:     20px;
+}
+
+/* ─── Reset & Base ───────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--void);
+  color: var(--star);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* ─── Typography ─────────────────────────────── */
+h1, h2, h3, h4, .orb {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 900; }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2.4rem); font-weight: 700; }
+h3 { font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 600; }
+h4 { font-size: 1rem; font-weight: 600; }
+
+p { color: var(--star-dim); max-width: 65ch; }
+
+/* ─── Navigation ─────────────────────────────── */
+.SCnav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 70px;
+  background: rgba(10, 10, 20, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-brand img {
+  height: 38px;
+  width: auto;
+}
+
+.nav-brand-name {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--white);
+  letter-spacing: 0.08em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 0.85rem;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--star-dim);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active { color: var(--crystal-glow); }
+
+.nav-cta {
+  background: linear-gradient(135deg, var(--plasma-dim), var(--plasma));
+  color: var(--white) !important;
+  padding: 0.5rem 1.25rem;
+  border-radius: 6px;
+  transition: opacity 0.2s !important;
+}
+.nav-cta:hover { opacity: 0.85; }
+
+/* Mobile hamburger */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.nav-toggle span {
+  width: 24px; height: 2px;
+  background: var(--star);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ─── Orbital Ring Divider (Signature Element) ── */
+.orbital-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 0 auto 3rem;
+  max-width: 600px;
+}
+.orbital-divider::before,
+.orbital-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--plasma-dim));
+}
+.orbital-divider::after {
+  background: linear-gradient(90deg, var(--plasma-dim), transparent);
+}
+.orbital-gem {
+  width: 14px; height: 14px;
+  background: var(--plasma);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  box-shadow: 0 0 16px var(--plasma);
+  flex-shrink: 0;
+}
+
+/* ─── Buttons ─────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  padding: 0.85rem 1.8rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.18s, box-shadow 0.18s, opacity 0.18s;
+  text-transform: uppercase;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--crystal-mid), var(--crystal-bright));
+  color: var(--white);
+  box-shadow: 0 4px 24px rgba(91, 31, 175, 0.5);
+}
+.btn-primary:hover { box-shadow: 0 6px 32px rgba(91, 31, 175, 0.7); }
+.btn-plasma {
+  background: linear-gradient(135deg, var(--plasma-dim), var(--plasma));
+  color: var(--white);
+  box-shadow: 0 4px 24px rgba(255, 16, 204, 0.4);
+}
+.btn-plasma:hover { box-shadow: 0 6px 32px rgba(255, 16, 204, 0.65); }
+.btn-ghost {
+  background: transparent;
+  color: var(--star);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover { border-color: var(--crystal-glow); color: var(--crystal-glow); }
+
+/* ─── Section Layout ─────────────────────────── */
+section { padding: 6rem 2rem; }
+
+.section-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--plasma);
+  margin-bottom: 0.75rem;
+}
+.section-title {
+  margin-bottom: 1rem;
+  color: var(--white);
+}
+.section-subtitle {
+  font-size: 1.05rem;
+  margin-bottom: 3rem;
+  max-width: 58ch;
+}
+
+/* ─── Cards ───────────────────────────────────── */
+.SCcard {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.SCcard:hover {
+  border-color: var(--crystal-glow);
+  transform: translateY(-4px);
+}
+
+.SCcard-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+.SCcard-grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.SCcard-grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+/* ─── Division Icons ─────────────────────────── */
+.division-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.25rem;
+}
+.division-tag {
+  display: inline-block;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 100px;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+.tag-terrestrial { background: rgba(91, 31, 175, 0.3); color: var(--crystal-glow); border: 1px solid rgba(139, 63, 239, 0.4); }
+.tag-aerospace   { background: rgba(16, 180, 255, 0.15); color: #7DDCFF; border: 1px solid rgba(16, 180, 255, 0.3); }
+.tag-marine      { background: rgba(16, 210, 160, 0.15); color: #5DFFCA; border: 1px solid rgba(16, 210, 160, 0.3); }
+.tag-business    { background: rgba(255, 180, 50, 0.15); color: #FFD97A; border: 1px solid rgba(255, 180, 50, 0.3); }
+
+/* ─── Value Pills ─────────────────────────────── */
+.value-pill {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem 1.5rem;
+  background: var(--card-bg);
+  border-left: 3px solid var(--plasma);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin-bottom: 1rem;
+}
+.value-pill-icon { font-size: 1.4rem; flex-shrink: 0; }
+.value-pill-title { font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--white); margin-bottom: 0.25rem; }
+
+/* ─── Star Field Background ───────────────────── */
+.starfield {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.starfield::before, .starfield::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1px 1px at 10% 15%, rgba(232,196,255,0.7) 0%, transparent 0%),
+    radial-gradient(1px 1px at 25% 60%, rgba(232,196,255,0.5) 0%, transparent 0%),
+    radial-gradient(1.5px 1.5px at 40% 30%, rgba(255,16,204,0.6) 0%, transparent 0%),
+    radial-gradient(1px 1px at 55% 80%, rgba(232,196,255,0.6) 0%, transparent 0%),
+    radial-gradient(1px 1px at 70% 20%, rgba(232,196,255,0.4) 0%, transparent 0%),
+    radial-gradient(1.5px 1.5px at 82% 55%, rgba(232,196,255,0.7) 0%, transparent 0%),
+    radial-gradient(1px 1px at 90% 75%, rgba(255,16,204,0.5) 0%, transparent 0%),
+    radial-gradient(1px 1px at 15% 88%, rgba(232,196,255,0.5) 0%, transparent 0%),
+    radial-gradient(1px 1px at 60% 45%, rgba(232,196,255,0.6) 0%, transparent 0%),
+    radial-gradient(1.5px 1.5px at 35% 70%, rgba(232,196,255,0.4) 0%, transparent 0%);
+}
+.starfield::after {
+  background-image:
+    radial-gradient(1px 1px at 5% 40%, rgba(232,196,255,0.5) 0%, transparent 0%),
+    radial-gradient(1px 1px at 20% 5%, rgba(232,196,255,0.6) 0%, transparent 0%),
+    radial-gradient(1.5px 1.5px at 48% 92%, rgba(255,16,204,0.4) 0%, transparent 0%),
+    radial-gradient(1px 1px at 75% 38%, rgba(232,196,255,0.7) 0%, transparent 0%),
+    radial-gradient(1px 1px at 88% 10%, rgba(232,196,255,0.5) 0%, transparent 0%),
+    radial-gradient(1px 1px at 65% 65%, rgba(232,196,255,0.4) 0%, transparent 0%),
+    radial-gradient(1.5px 1.5px at 3% 70%, rgba(232,196,255,0.6) 0%, transparent 0%),
+    radial-gradient(1px 1px at 95% 50%, rgba(255,16,204,0.5) 0%, transparent 0%),
+    radial-gradient(1px 1px at 30% 42%, rgba(232,196,255,0.5) 0%, transparent 0%),
+    radial-gradient(1px 1px at 52% 18%, rgba(232,196,255,0.7) 0%, transparent 0%);
+}
+
+/* ─── Page Hero (inner pages) ─────────────────── */
+.page-hero {
+  position: relative;
+  padding: 10rem 2rem 5rem;
+  text-align: center;
+  background: radial-gradient(ellipse at center top, rgba(91,31,175,0.35) 0%, transparent 65%);
+  overflow: hidden;
+}
+.page-hero .starfield { opacity: 0.6; }
+
+/* ─── Footer ──────────────────────────────────── */
+footer {
+  background: var(--void-2);
+  border-top: 1px solid var(--border);
+  padding: 3.5rem 2rem 2rem;
+}
+.footer-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(139,63,239,0.15);
+  margin-bottom: 2rem;
+}
+.footer-brand img { height: 48px; margin-bottom: 1rem; }
+.footer-brand-name {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--white);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+.footer-desc { font-size: 0.875rem; line-height: 1.6; }
+.footer-col h4 { font-family: 'Orbitron', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white); margin-bottom: 1.25rem; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 0.65rem; }
+.footer-col ul li a { font-size: 0.875rem; color: var(--star-dim); transition: color 0.2s; }
+.footer-col ul li a:hover { color: var(--crystal-glow); }
+.footer-bottom {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: rgba(155,130,204,0.6);
+}
+
+/* ─── Forms ───────────────────────────────────── */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.form-label {
+  display: block;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--star);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  background: rgba(26, 10, 58, 0.6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  color: var(--star);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: var(--crystal-bright);
+  box-shadow: 0 0 0 3px rgba(139, 63, 239, 0.2);
+}
+.form-textarea { min-height: 130px; resize: vertical; }
+.form-select option { background: var(--crystal-dark); }
+.form-input::placeholder,
+.form-textarea::placeholder { color: var(--star-dim); opacity: 0.5; }
+
+/* ─── Utilities ───────────────────────────────── */
+.text-center { text-align: center; }
+.text-plasma { color: var(--plasma); }
+.text-glow   { color: var(--crystal-glow); }
+.text-white  { color: var(--white); }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 2rem; }
+.mt-4 { margin-top: 3rem; }
+.mb-0 { margin-bottom: 0; }
+.flex { display: flex; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.gap-1 { gap: 0.5rem; }
+.gap-2 { gap: 1rem; }
+.glow-purple { text-shadow: 0 0 30px rgba(139, 63, 239, 0.6); }
+.glow-plasma { text-shadow: 0 0 30px rgba(255, 16, 204, 0.6); }
+
+/* ─── Responsive ──────────────────────────────── */
+@media (max-width: 992px) {
+  
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: rgba(10,10,20,0.97); padding: 1.5rem 2rem; gap: 1.25rem; border-bottom: 1px solid var(--border); margin-top: 0 !important;}
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: flex; }
+  section { padding: 4rem 1.25rem; }
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  h1 { font-size: 2rem; }
+  
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
